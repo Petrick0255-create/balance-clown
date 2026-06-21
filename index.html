@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>균형잡는 삐에로</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div>
+      <h1>균형잡는 삐에로</h1>
+      <p>Balance Clown</p>
+    </div>
+    <div class="score-box">BEST <span id="bestTime">0.00</span>s</div>
+  </header>
+
+  <main>
+    <section id="selectScreen" class="screen">
+      <h2 id="selectTitle">캐릭터 선택</h2>
+      <div id="cardGrid" class="card-grid"></div>
+    </section>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <section id="panel" class="panel hidden">
+      <div class="timer">TIME <strong id="timeText">0.00</strong>s</div>
+      <button id="resetBtn">다시</button>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="js/game.js?v=1"></script>
+</body>
+</html>
