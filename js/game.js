@@ -280,13 +280,17 @@ function showStageSelect() {
 }
 
 function startGameScreen() {
-  document.getElementById("app").classList.add("game-mode");
-  resize();
   state = "ready";
 
   selectScreen.classList.add("hidden");
   canvas.classList.remove("hidden");
   panel.classList.remove("hidden");
+
+  document.getElementById("app").classList.add("game-mode");
+
+  setTimeout(() => {
+    resize();
+  }, 50);
 
   updateBestText();
   resetGame();
