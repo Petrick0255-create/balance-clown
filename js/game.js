@@ -50,8 +50,8 @@ const STAGES = [
     name: "페트병",
     img: "images/bottle.png",
     stars: 1,
-    difficulty: 0.00175,
-    limit: 0.86,
+    difficulty: 0.00145,
+    limit: 1.10,
     poleRatio: 0.43
   },
   {
@@ -59,8 +59,8 @@ const STAGES = [
     name: "나무막대",
     img: "images/stick.png",
     stars: 2,
-    difficulty: 0.0020,
-    limit: 0.80,
+    difficulty: 0.00175,
+    limit: 0.94,
     poleRatio: 0.46
   },
   {
@@ -68,8 +68,8 @@ const STAGES = [
     name: "나무젓가락",
     img: "images/chopstick.png",
     stars: 3,
-    difficulty: 0.00225,
-    limit: 0.74,
+    difficulty: 0.00205,
+    limit: 0.88,
     poleRatio: 0.48
   },
   {
@@ -77,8 +77,8 @@ const STAGES = [
     name: "축구공",
     img: "images/soccerball.png",
     stars: 4,
-    difficulty: 0.00255,
-    limit: 0.68,
+    difficulty: 0.00235,
+    limit: 0.70,
     poleRatio: 0.50
   },
   {
@@ -86,8 +86,8 @@ const STAGES = [
     name: "연필",
     img: "images/pencil.png",
     stars: 5,
-    difficulty: 0.0029,
-    limit: 0.62,
+    difficulty: 0.00285,
+    limit: 0.56,
     poleRatio: 0.52
   }
 ];
