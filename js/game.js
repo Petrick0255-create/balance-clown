@@ -159,7 +159,9 @@ function getHeaderHeight() {
 
 function setLayoutSize() {
   const vh = getViewportHeight();
-  const headerH = getHeaderHeight();
+  const headerH = document.getElementById("app").classList.contains("game-mode")
+    ? 0
+    : getHeaderHeight();
 
   let panelH = 150;
   if (vh < 700) panelH = 138;

@@ -159,3 +159,18 @@ button {
 .hidden {
   display: none !important;
 }
+
+#app.game-mode header {
+  height: 0;
+  flex-basis: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#app.game-mode main {
+  height: var(--app-height, 100dvh);
+}
+
+#app.game-mode .screen {
+  height: var(--app-height, 100dvh);
+}
