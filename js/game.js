@@ -216,7 +216,8 @@ if (window.visualViewport) {
 resize();
 
 function showCharacterSelect() {
-  document.querySelector("header").style.display = "flex";
+  document.getElementById("app").classList.remove("game-mode");
+  resize();
   screenMode = "character";
   state = "select";
 
@@ -246,7 +247,6 @@ function showCharacterSelect() {
 }
 
 function showStageSelect() {
-  document.querySelector("header").style.display = "flex";
   screenMode = "stage";
   state = "select";
 
@@ -279,7 +279,8 @@ function showStageSelect() {
 }
 
 function startGameScreen() {
-  document.querySelector("header").style.display = "none";
+  document.getElementById("app").classList.add("game-mode");
+  resize();
   state = "ready";
 
   selectScreen.classList.add("hidden");
@@ -291,7 +292,6 @@ function startGameScreen() {
 }
 
 function resetGame() {
-  document.querySelector("header").style.display = "flex";
   state = "ready";
   angle = 0;
   angularVelocity = 0;
