@@ -11,6 +11,7 @@ const panel = document.getElementById("panel");
 const timeText = document.getElementById("timeText");
 const bestTimeText = document.getElementById("bestTime");
 const resetBtn = document.getElementById("resetBtn");
+const homeBtn = document.getElementById("homeBtn");
 
 let W, H, CX, CY;
 
@@ -449,6 +450,19 @@ resetBtn.onclick = e => {
   } else {
     resetGame();
   }
+
+  vibrate(20);
+};
+
+homeBtn.onclick = e => {
+  e.stopPropagation();
+
+  resetGame();
+
+  selectedCharacter = null;
+  selectedStage = null;
+
+  showCharacterSelect();
 
   vibrate(20);
 };

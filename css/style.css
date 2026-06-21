@@ -174,3 +174,23 @@ button {
 #app.game-mode .screen {
   height: var(--app-height, 100dvh);
 }
+
+.top-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#homeBtn {
+  width: 86px;
+  flex: 0 0 86px;
+  padding: 9px 10px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.85);
+}
+
+.top-row .timer {
+  flex: 1;
+  margin-bottom: 0;
+}

@@ -59,19 +59,23 @@ export async function saveScore({
 }
 
 export async function getTop5(stageId) {
+  const weekKey = getWeekKey();
 
-  const q = query(
-    collection(db, "clown-rankings"),
-    where("weekKey", "==", getWeekKey()),
-    where("stageId", "==", stageId),
-    orderBy("score", "desc"),
-    limit(5)
+  const snapshot = await getDocs(
+    collection(db, "clown-rankings")
   );
 
-  const snapshot = await getDocs(q);
+  const scores = snapshot.docs
+    .map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    .filter(item => item.weekKey === weekKey)
+    .filter(item => item.stageId === stageId)
+    .sort((a, b) => Number(b.score) - Number(a.score))
+    .slice(0, 5);
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  console.log("TOP5", stageId, scores);
+
+  return scores;
 }
