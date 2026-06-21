@@ -14,6 +14,18 @@ const resetBtn = document.getElementById("resetBtn");
 
 let W, H, CX, CY;
 
+let STAGE_HEIGHT = 220;
+let CHARACTER_HEIGHT = 120;
+let CHARACTER_OFFSET = 200;
+
+const STAGE_SCALE = {
+  bottle: 1.00,
+  stick: 0.95,
+  chopstick: 0.90,
+  soccerball: 0.70,
+  pencil: 0.78
+};
+
 const CHARACTERS = [
   {
     id: "clown",
@@ -174,6 +186,24 @@ function resize() {
   H = rect.height;
   CX = W / 2;
   CY = H * 0.78;
+  const GAME_SIZE = Math.min(W, H);
+
+  const GAME_SIZE = Math.min(W, H);
+
+  // 캐릭터 먼저 계산
+  CHARACTER_HEIGHT = GAME_SIZE * 0.20;
+
+  // 캐릭터 + 장애물 전체 높이가 화면의 60%를 넘지 않게
+  const MAX_TOTAL_HEIGHT = H * 0.60;
+  
+  // 연필, 젓가락 같은 최고 높이 기준
+  STAGE_HEIGHT = MAX_TOTAL_HEIGHT - CHARACTER_HEIGHT;
+  
+  // 너무 작아지는 것 방지
+  STAGE_HEIGHT = Math.max(STAGE_HEIGHT, GAME_SIZE * 0.25);
+  
+  // 캐릭터 위치
+  CHARACTER_OFFSET = STAGE_HEIGHT * 0.95;
 }
 
 window.addEventListener("resize", resize);
@@ -534,33 +564,9 @@ function drawStageObject() {
   ctx.translate(CX, CY);
   ctx.rotate(angle);
 
-  let targetHeight = 220;
-  let bottomY = 0;
+  const scale = STAGE_SCALE[selectedStage.id] || 1;
 
-  if (selectedStage.id === "bottle") {
-    targetHeight = 245;
-    bottomY = 18;
-  }
-
-  if (selectedStage.id === "stick") {
-    targetHeight = 250;
-    bottomY = 18;
-  }
-
-  if (selectedStage.id === "chopstick") {
-    targetHeight = 250;
-    bottomY = 18;
-  }
-
-  if (selectedStage.id === "soccerball") {
-    targetHeight = 175;
-    bottomY = 10;
-  }
-
-  if (selectedStage.id === "pencil") {
-    targetHeight = 265;
-    bottomY = 20;
-  }
+  const targetHeight = STAGE_HEIGHT * scale;
 
   // 실제 PNG의 아래쪽이 회전축 근처에 오도록 그림
   drawImageBottomAligned(img, 0, bottomY, targetHeight);
@@ -569,27 +575,19 @@ function drawStageObject() {
 }
 
 function getCharacterYOffset() {
-  if (!selectedStage) return 200;
 
-  switch (selectedStage.id) {
-    case "bottle":
-      return 215;
-
-    case "stick":
-      return 225;
-
-    case "chopstick":
-      return 235;
-
-    case "soccerball":
-      return 165;
-
-    case "pencil":
-      return 245;
-
-    default:
-      return 210;
+  if (!selectedStage) {
+    return CHARACTER_OFFSET;
   }
+
+  const scale =
+    STAGE_SCALE[selectedStage.id] || 1;
+
+  if (selectedStage.id === "soccerball") {
+    return STAGE_HEIGHT * scale * 0.78;
+  }
+
+  return STAGE_HEIGHT * scale * 0.95;
 }
 
 function drawCharacter() {
