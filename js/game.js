@@ -186,7 +186,6 @@ function resize() {
   H = rect.height;
   CX = W / 2;
   CY = H * 0.78;
-  const GAME_SIZE = Math.min(W, H);
 
   const GAME_SIZE = Math.min(W, H);
 
@@ -308,7 +307,6 @@ function resetGame() {
 }
 
 function startPlaying() {
-  document.querySelector("header").style.display = "none";
   state = "playing";
   angle = 0;
   angularVelocity = 0;
@@ -565,15 +563,18 @@ function drawStageObject() {
 
   ctx.save();
 
-  // 장애물의 회전축 = 화면 중심 아래 기준점
   ctx.translate(CX, CY);
   ctx.rotate(angle);
 
   const scale = STAGE_SCALE[selectedStage.id] || 1;
-
   const targetHeight = STAGE_HEIGHT * scale;
 
-  // 실제 PNG의 아래쪽이 회전축 근처에 오도록 그림
+  let bottomY = 0;
+
+  if (selectedStage.id === "soccerball") {
+    bottomY = 18;
+  }
+
   drawImageBottomAligned(img, 0, bottomY, targetHeight);
 
   ctx.restore();
