@@ -201,3 +201,16 @@ button {
   object-fit: contain;
   margin-left: -10%;
 }
+
+.character-card img {
+  height: 230px;
+  object-fit: contain;
+}
+
+.clown-card img {
+  transform: scale(1.35);
+}
+
+.cat-card img {
+  transform: scale(1);
+}
