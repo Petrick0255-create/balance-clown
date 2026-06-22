@@ -267,6 +267,7 @@ function showCharacterSelect() {
 
 function showStageSelect() {
   cardGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
+
   screenMode = "stage";
   state = "select";
 
@@ -279,6 +280,8 @@ function showStageSelect() {
 
   STAGES.forEach(stage => {
     const card = document.createElement("div");
+
+    // 여기 중요: character-card 넣으면 안 됨
     card.className = "card";
 
     const stars = "★".repeat(stage.stars) + "☆".repeat(5 - stage.stars);
