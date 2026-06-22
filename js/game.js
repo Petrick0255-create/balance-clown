@@ -225,6 +225,7 @@ if (window.visualViewport) {
 resize();
 
 function showCharacterSelect() {
+  cardGrid.style.gridTemplateColumns = "1fr";
   document.getElementById("app").classList.remove("game-mode");
   resize();
   screenMode = "character";
@@ -256,6 +257,7 @@ function showCharacterSelect() {
 }
 
 function showStageSelect() {
+  cardGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
   screenMode = "stage";
   state = "select";
 
