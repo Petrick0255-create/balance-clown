@@ -33,14 +33,16 @@ const CHARACTERS = [
     name: "삐에로",
     idle: "images/clown.png",
     left: "images/clown_left.png",
-    right: "images/clown_right.png"
+    right: "images/clown_right.png",
+    preview: "images/clown_select.png"
   },
   {
     id: "cat",
     name: "고양이",
     idle: "images/cat.png",
     left: "images/cat_left.png",
-    right: "images/cat_right.png"
+    right: "images/cat_right.png",
+    preview: "images/cat.png"
   }
 ];
 
@@ -120,7 +122,12 @@ function loadImages() {
   const paths = [];
 
   CHARACTERS.forEach(c => {
-    paths.push(c.idle, c.left, c.right);
+    paths.push(
+      c.idle,
+      c.left,
+      c.right,
+      c.preview || c.idle
+    );
   });
 
   STAGES.forEach(s => {
@@ -235,7 +242,7 @@ function showCharacterSelect() {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${character.idle}" alt="${character.name}">
+      <img class="character-preview" src="${character.preview || character.idle}" alt="${character.name}">
       <div class="card-title">${character.name}</div>
     `;
 
