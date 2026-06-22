@@ -279,7 +279,7 @@ function showStageSelect() {
 
   STAGES.forEach(stage => {
     const card = document.createElement("div");
-    card.className = `card character-card ${character.id}-card`;
+    card.className = "card";
 
     const stars = "★".repeat(stage.stars) + "☆".repeat(5 - stage.stars);
 

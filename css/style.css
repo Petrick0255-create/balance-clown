@@ -202,15 +202,15 @@ button {
   margin-left: -10%;
 }
 
-.character-card img {
+.character-card .character-preview {
   height: 230px;
   object-fit: contain;
 }
 
-.clown-card img {
+.clown-card .character-preview {
   transform: scale(1.35);
 }
 
-.cat-card img {
+.cat-card .character-preview {
   transform: scale(1);
 }
