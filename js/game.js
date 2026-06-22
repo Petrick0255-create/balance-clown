@@ -243,7 +243,16 @@ function showCharacterSelect() {
     card.className = "card";
 
     card.innerHTML = `
-      <img class="character-preview" src="${character.preview || character.idle}" alt="${character.name}">
+      <img
+        class="character-preview"
+        src="${character.preview || character.idle}"
+        alt="${character.name}"
+        style="${
+          character.id === 'clown'
+            ? 'transform:scale(1.25);'
+            : 'transform:scale(1);'
+        }"
+      >
       <div class="card-title">${character.name}</div>
     `;
 
