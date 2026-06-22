@@ -235,7 +235,7 @@ function showCharacterSelect() {
     card.className = "card";
 
     card.innerHTML = `
-      <img class="character-preview" src="${character.idle}" alt="${character.name}">
+      <img src="${character.idle}" alt="${character.name}">
       <div class="card-title">${character.name}</div>
     `;
 
