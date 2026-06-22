@@ -249,7 +249,7 @@ function showCharacterSelect() {
         alt="${character.name}"
         style="${
           character.id === 'clown'
-            ? 'transform:scale(1.4);'
+            ? 'transform:scale(1);'
             : 'transform:scale(1);'
         }"
       >
