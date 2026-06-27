@@ -33,14 +33,16 @@ const CHARACTERS = [
     name: "삐에로",
     idle: "images/clown.png",
     left: "images/clown_left.png",
-    right: "images/clown_right.png"
+    right: "images/clown_right.png",
+    preview: "images/clown_select.png"
   },
   {
     id: "cat",
     name: "고양이",
     idle: "images/cat.png",
     left: "images/cat_left.png",
-    right: "images/cat_right.png"
+    right: "images/cat_right.png",
+    preview: "images/cat.png"
   }
 ];
 
@@ -120,7 +122,12 @@ function loadImages() {
   const paths = [];
 
   CHARACTERS.forEach(c => {
-    paths.push(c.idle, c.left, c.right);
+    paths.push(
+      c.idle,
+      c.left,
+      c.right,
+      c.preview || c.idle
+    );
   });
 
   STAGES.forEach(s => {
@@ -218,6 +225,7 @@ if (window.visualViewport) {
 resize();
 
 function showCharacterSelect() {
+  cardGrid.style.gridTemplateColumns = "1fr";
   document.getElementById("app").classList.remove("game-mode");
   resize();
   screenMode = "character";
@@ -235,7 +243,16 @@ function showCharacterSelect() {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${character.idle}" alt="${character.name}">
+      <img
+        class="character-preview"
+        src="${character.preview || character.idle}"
+        alt="${character.name}"
+        style="${
+          character.id === 'clown'
+            ? 'transform:scale(1);'
+            : 'transform:scale(1);'
+        }"
+      >
       <div class="card-title">${character.name}</div>
     `;
 
@@ -249,6 +266,8 @@ function showCharacterSelect() {
 }
 
 function showStageSelect() {
+  cardGrid.style.gridTemplateColumns = "repeat(2, 1fr)";
+
   screenMode = "stage";
   state = "select";
 
@@ -261,6 +280,8 @@ function showStageSelect() {
 
   STAGES.forEach(stage => {
     const card = document.createElement("div");
+
+    // 여기 중요: character-card 넣으면 안 됨
     card.className = "card";
 
     const stars = "★".repeat(stage.stars) + "☆".repeat(5 - stage.stars);

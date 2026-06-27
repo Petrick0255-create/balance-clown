@@ -100,7 +100,7 @@ main {
 
 .card img {
   width: 100%;
-  height: 130px;
+  height: 180px;
   object-fit: contain;
 }
 
@@ -193,4 +193,24 @@ button {
 .top-row .timer {
   flex: 1;
   margin-bottom: 0;
+}
+
+.character-preview {
+  width: 120%;
+  height: 260px;
+  object-fit: contain;
+  margin-left: -10%;
+}
+
+.character-card .character-preview {
+  height: 230px;
+  object-fit: contain;
+}
+
+.clown-card .character-preview {
+  transform: scale(1.35);
+}
+
+.cat-card .character-preview {
+  transform: scale(1);
 }
